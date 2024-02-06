@@ -50,6 +50,9 @@ lvim.plugins = {
   }
 }
 
+-- basic settings ---------------------------------------------
+vim.opt.wrap = true
+
 -- hotkeys -----------------------
 -- gt or gT to switch buffer
 lvim.keys.normal_mode["gt"] = ":BufferLineCycleNext<CR>"
@@ -60,6 +63,7 @@ lvim.keys.normal_mode["<A-f>"] = ":Telescope live_grep<CR>"
 
 -- ctrl + c to close search highlight
 lvim.keys.normal_mode["<C-n>"] = ":noh<CR>"
+lvim.keys.normal_mode["<C-p>"] = ":Telescope git_files<CR>"
 
 -- ctrl + t to open terminal
 lvim.builtin.terminal.open_mapping = "<c-t>"
