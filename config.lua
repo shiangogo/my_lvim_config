@@ -41,13 +41,18 @@ lvim.plugins = {
       require("gitblame").setup { enabled = true }
     end,
   },
+
+  -- todo comments
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
       require("todo-comments").setup()
     end
-  }
+  },
+
+  -- discord
+  { "vimsence/vimsence" }
 }
 
 -- basic settings ---------------------------------------------
@@ -119,3 +124,11 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
 ---------------------------------------------------------------
 
+-- discord ----------------------------------------------------
+vim.g.vimsence_small_text = "NeoVim"
+vim.g.vimsence_small_image = "neovim"
+vim.g.vimsence_editing_details = "Editing: {}"
+vim.g.vimsence_editing_state = "Working on: {}"
+vim.g.vimsence_file_explorer_text = "In NERDTree"
+vim.g.vimsence_file_explorer_details = "Looking for files"
+---------------------------------------------------------------
