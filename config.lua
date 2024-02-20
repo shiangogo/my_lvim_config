@@ -123,7 +123,22 @@ lvim.plugins = {
   },
 
   -- discord
-  { "vimsence/vimsence" }
+  { "vimsence/vimsence" },
+
+  -- Ruby endwise
+  { "RRethy/nvim-treesitter-endwise",
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        endwise = {
+          enable = true,
+        },
+      }
+    end
+  },
+
+  -- html emmet
+  -- To use emmet, type html structure, then press <C-y> and ","
+  { "mattn/emmet-vim" },
 }
 
 -- basic settings ---------------------------------------------
@@ -135,7 +150,7 @@ lvim.keys.normal_mode["gt"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["gT"] = ":BufferLineCyclePrev<CR>"
 
 -- alt + f to search words in files
-lvim.keys.normal_mode["<A-f>"] = ":Telescope live_grep<CR>"
+lvim.keys.normal_mode["<C-f>"] = ":Telescope live_grep<CR>"
 
 -- ctrl + c to close search highlight
 lvim.keys.normal_mode["<C-n>"] = ":noh<CR>"
@@ -203,3 +218,12 @@ vim.g.vimsence_editing_state = "Working on: {}"
 vim.g.vimsence_file_explorer_text = "In NERDTree"
 vim.g.vimsence_file_explorer_details = "Looking for files"
 ---------------------------------------------------------------
+-- lsp --------------------------------------------------------
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    signs = { severity_limit = "Hint" },
+    virtual_text = { severity_limit = "Warning" },
+  }
+)
+---------------------------------------------------------------
+
